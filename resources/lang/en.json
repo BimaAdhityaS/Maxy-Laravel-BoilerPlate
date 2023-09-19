@@ -119,6 +119,7 @@
   "views.admin.purchase.order.lines.create.discount":"Discount",
   "views.admin.purchase.order.lines.create.cancel":"Cancel",
   "views.admin.purchase.order.lines.create.save":"Save",
+  "views.admin.purchase.order.lines.create.product":"Product Name",
   "**************************** Admin dashboard *****************": "Admin dashboard i18n",
   "views.admin.dashboard.title": "Dashboard",
   "views.admin.dashboard.count_0": "Total users",
