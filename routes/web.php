@@ -65,6 +65,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('permissions/{user}/repeat', 'PermissionController@repeat')->name('permissions.repeat');
     Route::get('dashboard/log-chart', 'DashboardController@getLogChartData')->name('dashboard.log.chart');
     Route::get('dashboard/registration-chart', 'DashboardController@getRegistrationChartData')->name('dashboard.registration.chart');
+    Route::get('products','PurchaseOrderController@getProductList')->name('products');
+    Route::get('products/(id)','PurchaseOrderController@getProductShow')->name('products.show');
+    Route::get('products/(id)/edit','PurchaseOrderController@getProductEdit')->name('products.edit');
+    Route::get('products/(id)/destroy','PurchaseOrderController@getProductDestroy')->name('products.destroy');
 });
 
 
