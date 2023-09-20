@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Sep 2023 pada 09.37
+-- Waktu pembuatan: 20 Sep 2023 pada 10.27
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -171,7 +171,7 @@ CREATE TABLE `protection_validations` (
 
 CREATE TABLE `purchase_order_lines` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) DEFAULT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
   `qty` int(11) NOT NULL,
   `price` float NOT NULL,
   `discount` float NOT NULL,
@@ -185,11 +185,7 @@ CREATE TABLE `purchase_order_lines` (
 --
 
 INSERT INTO `purchase_order_lines` (`id`, `product_id`, `qty`, `price`, `discount`, `total`, `created_at`, `updated_at`) VALUES
-(1, NULL, 5, 2000, 50, 9000, '2023-09-19 00:28:26', '2023-09-19 00:28:26'),
-(2, NULL, 2, 10000, 50, 15000, '2023-09-19 00:29:22', '2023-09-19 00:29:22'),
-(3, NULL, 2, 5000, 50, 7500, '2023-09-19 00:30:05', '2023-09-19 00:30:05'),
-(4, NULL, 2, 2000, 50, 3000, '2023-09-19 00:30:22', '2023-09-19 00:30:22'),
-(5, NULL, 2, 1000, 50, 1500, '2023-09-19 00:32:09', '2023-09-19 00:32:09');
+(6, 1, 2, 2000, 50, 3000, '2023-09-19 08:36:52', '2023-09-19 08:36:52');
 
 -- --------------------------------------------------------
 
@@ -384,7 +380,7 @@ ALTER TABLE `protection_validations`
 -- AUTO_INCREMENT untuk tabel `purchase_order_lines`
 --
 ALTER TABLE `purchase_order_lines`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `roles`
@@ -419,6 +415,12 @@ ALTER TABLE `protection_shop_tokens`
 --
 ALTER TABLE `protection_validations`
   ADD CONSTRAINT `pv_foreign_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `purchase_order_lines`
+--
+ALTER TABLE `purchase_order_lines`
+  ADD CONSTRAINT `purchase_order_lines_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `social_accounts`
